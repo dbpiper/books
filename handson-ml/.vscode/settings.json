@@ -1,0 +1,9 @@
+{
+  "python.pythonPath": "/home/david/.pyenv/versions/anaconda3-2018.12/bin/python",
+  "cSpell.words": [
+    "mnist",
+    "numpy"
+  ],
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+}

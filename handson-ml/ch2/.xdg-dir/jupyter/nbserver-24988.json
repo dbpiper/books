@@ -1,0 +1,11 @@
+{
+  "base_url": "/",
+  "hostname": "localhost",
+  "notebook_dir": "/home/david/usr/books/handson-ml/ch2",
+  "password": false,
+  "pid": 24988,
+  "port": 8888,
+  "secure": false,
+  "token": "c59586add5d885bee6f24f1e62cff39a0eec839717654c4d",
+  "url": "http://localhost:8888/"
+}
