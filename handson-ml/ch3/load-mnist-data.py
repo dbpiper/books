@@ -2,6 +2,7 @@ import numpy as np
 import os
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from json_tricks import dump, load
 
 np.random.seed(42)
 
@@ -23,7 +24,7 @@ def sort_by_target(mnist):
     mnist.target[60000:] = mnist.target[reorder_test + 60000]
 
 
-def save_mnist_data():
+def download_mnist_data():
     from sklearn.datasets import fetch_openml
 
     mnist = fetch_openml("mnist_784", version=1, cache=True)
@@ -33,6 +34,28 @@ def save_mnist_data():
     sort_by_target(mnist)
     return mnist
 
+# This is slower than the default version!!
+# JSON serializing/deserializing the numpy sparse array seems to
+# not work very well!
+#
+# def load_mnist_data():
+#     if not os.path.exists("data"):
+#         os.makedirs("data")
 
-mnist = save_mnist_data()
+#     with open("data/mnist-data.json", "a+") as mnist_file:
+#         # read/write from the start of the file
+#         # overwriting if needed
+#         mnist_file.seek(0)
+#         if os.path.getsize("data/mnist-data.json") <= 0:
+#             print("no file!!!!")
+#             mnist_data = download_mnist_data()
+#             dump(mnist_data, mnist_file)
+#             return mnist_data
+#         else:
+#             print("file exists!!")
+#             return load(mnist_file)
+
+
+mnist = download_mnist_data()
 print(mnist["data"], mnist["target"])
+
